@@ -15,11 +15,11 @@ development:
   database: NetBanking_development
   pool: 5
 
-test:
-  adapter: postgresql
-  encoding: unicode
-  database: NetBanking_test
-  pool: 5
+# test:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: NetBanking_test
+#   pool: 5
 
 
 # Warning: The database defined as "test" will be erased and

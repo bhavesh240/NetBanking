@@ -1,0 +1,2 @@
+class Permanentaddress < Address
+end

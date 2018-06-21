@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+bank_list = [
+   "BOI",
+   "SBI",
+   "ICICI",
+   "Punjab"
+]
+
+bank_list.each do |name|
+  Bankname.create( name: name)
+end

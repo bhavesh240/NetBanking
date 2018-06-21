@@ -1,0 +1,177 @@
+<div class="container">
+<div class="row">
+  <div class="col-md-4">
+  </div>
+
+  <div class="col-md-4">
+    <h2>Sign up</h2>
+
+    <%= form_for(resource, as: resource_name,url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="field form-group">
+      <%= f.label :ChooseBank %>
+      <%= f.collection_select(:bankname, Bankname.all, :id, :name, :include_blank => "Please select bank") %>
+
+    </div>
+    <br>
+
+    <div class="field form-group">
+      <%= f.label :FirstName %>
+      <%= f.text_field :firstname, autofocus: true,class: "form-control" %>
+    </div>
+    <br>
+
+    <div class="field form-group">
+      <%= f.label :LastName %>
+      <%= f.text_field :lastname, autofocus: true,class: "form-control" %>
+    </div>
+    <br>
+
+    <div class="field form-group">
+      <%= f.label :Fathername %>
+      <%= f.text_field :fathername, autofocus: true,class: "form-control" %>
+    </div>
+    <br>
+
+
+    <div class="field form-group">
+      <%= f.label :Mothername %>
+      <%= f.text_field :mothername,class: "form-control" ,autofocus: true %>
+    </div>
+    <br>
+
+
+    <div class="field form-group">
+      <%= f.label :Occupation %>
+      <%= f.text_field :occupation,class: "form-control" ,autofocus: true %>
+    </div>
+    <br>
+
+    <div class="field form-group">
+      <%= f.label :FatherOccupation %>
+      <%= f.text_field :fatheroccupation, class: "form-control",autofocus: true %>
+    </div>
+    <br>
+
+    <div class="field form-group">
+      <%= f.label :MotherOccupation %>
+      <%= f.text_field :motheroccupation,class: "form-control",autofocus: true %>
+    </div>
+    <br>
+
+    <div class="field form-group">
+      <%= f.label :PhoneNumber %>
+      <%= f.text_field :phonenumber,class: "form-control", autofocus: true %>
+    </div>
+    <br>
+
+    <div class="field form-group">
+      <%= f.label :AadharNumber %>
+      <%= f.text_field :aadharnumber,class: "form-control" ,autofocus: true %>
+    </div>
+    <br>
+
+    <div class="field form-group">
+      <%= f.label "Pan Number" %>
+      <%= f.text_field :pannumber,class: "form-control", autofocus: true %>
+    </div>
+    <br>
+
+    <div class="field form-group">
+      <%= f.label :Document %>
+      <%= f.file_field :documentimage,class: "form-control" ,autofocus: true %>
+    </div>
+    <br>
+
+    <div class="field form-group">
+      <%= f.label :Upload_ProfilePhoto %>
+      <%= f.file_field :userimage,class: "form-control" ,autofocus: true %>
+    </div>
+    <br>
+
+    <div class="field form-group" id="address">
+      <h3><%= f.label "Permanent Address" %></h3>
+
+      <%= f.fields_for :permanentaddress,Permanentaddress.new do |address_field| %>
+      
+      <%= address_field.label "House No." %>
+      <%= address_field.text_field :houseno ,class: "form-control", autofocus: true %>
+
+      <%= address_field.label "Street No." %>
+      <%= address_field.text_field :streetno,class: "form-control", autofocus: true %>
+
+      <%= address_field.label "Region/Area" %>
+      <%= address_field.text_field :area,class: "form-control", autofocus: true %>
+
+      <%= address_field.label "City" %>
+      <%= address_field.text_field :city,class: "form-control", autofocus: true %>
+
+      <%= address_field.label "State" %>
+      <%= address_field.text_field :state,class: "form-control", autofocus: true %>
+
+      <%= address_field.label "Country" %>
+      <%= address_field.text_field :country,class: "form-control", autofocus: true %>
+
+      <%= address_field.label "PinCode :" %>
+      <%= address_field.text_field :pincode,class: "form-control", autofocus: true %>
+      <% end %>
+    </div>
+    <br>
+
+    <div class="field form-group" id="address">
+      <h3><%= f.label "Local Address" %></h3>
+
+      <%= f.fields_for :localaddress,Localaddress.new do |address_field| %>
+      
+      <%= address_field.label "House No." %>
+      <%= address_field.text_field :houseno ,class: "form-control", autofocus: true %>
+
+      <%= address_field.label "Street No." %>
+      <%= address_field.text_field :streetno,class: "form-control", autofocus: true %>
+
+      <%= address_field.label "Region/Area" %>
+      <%= address_field.text_field :area,class: "form-control", autofocus: true %>
+
+      <%= address_field.label "City" %>
+      <%= address_field.text_field :city,class: "form-control", autofocus: true %>
+
+      <%= address_field.label "State" %>
+      <%= address_field.text_field :state,class: "form-control", autofocus: true %>
+
+      <%= address_field.label "Country" %>
+      <%= address_field.text_field :country,class: "form-control", autofocus: true %>
+
+      <%= address_field.label "PinCode :" %>
+      <%= address_field.text_field :pincode,class: "form-control", autofocus: true %>
+      <% end %>
+    </div>
+    <br>
+
+
+    <div class="field form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email,class: "form-control" ,autofocus: true, autocomplete: "email" %>
+    </div>
+    <br>
+
+    <div class="field form-group">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password,class: "form-control" ,autocomplete: "off" %>
+    </div>
+    <br>
+
+    <div class="field form-group">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation,class: "form-control" ,autocomplete: "off" %>
+    </div>
+    <br>
+
+    <div class="actions">
+      <%= f.submit "Sign up", class: "form-control btn btn-success" %>
+    </div>
+  <% end %>
+</div>
