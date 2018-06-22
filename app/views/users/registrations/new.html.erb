@@ -11,7 +11,7 @@
 
     <div class="field form-group">
       <%= f.label :ChooseBank %>
-      <%= f.collection_select(:bankname, Bankname.all, :id, :name, :include_blank => "Please select bank") %>
+      <%= f.collection_select(:bankname, Bankname.all, :name,:name, :include_blank => "Please select bank") %>
 
     </div>
     <br>
@@ -85,7 +85,7 @@
     <br>
 
     <div class="field form-group">
-      <%= f.label :Upload_ProfilePhoto %>
+      <%= f.label "Upload Profile Photo" %>
       <%= f.file_field :userimage,class: "form-control" ,autofocus: true %>
     </div>
     <br>
@@ -115,6 +115,10 @@
 
       <%= address_field.label "PinCode :" %>
       <%= address_field.text_field :pincode,class: "form-control", autofocus: true %>
+
+      <%= address_field.label "Address Proof:" %>
+      <%= address_field.text_field :addressproof,class: "form-control", autofocus: true %>
+
       <% end %>
     </div>
     <br>
@@ -144,6 +148,10 @@
 
       <%= address_field.label "PinCode :" %>
       <%= address_field.text_field :pincode,class: "form-control", autofocus: true %>
+      
+      <%= address_field.label "Address Proof:" %>
+      <%= address_field.text_field :addressproof,class: "form-control", autofocus: true %>
+
       <% end %>
     </div>
     <br>
@@ -151,7 +159,7 @@
 
     <div class="field form-group">
       <%= f.label :email %>
-      <%= f.email_field :email,class: "form-control" ,autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email,class: "form-control" ,autofocus: true, autocomplete: "off" %>
     </div>
     <br>
 
