@@ -1,3 +1,40 @@
-<h1>
-  Welcome Index
-</h1>
+<% if (current_user.has_role? "user")&&(current_user[:verify] == nil)  %>
+  <center>
+  <h1>
+    <u>Welcome <%= current_user.firstname+" "+current_user.lastname %>To NetBanking System</u>
+  </h1>
+  <hr>
+    <p> Your Account Is on Hold </p>
+    <p> Need to be verified by Bank Manager </p>
+    <p>Regards</p>
+    <p><%= current_user.bankname %>,BankManager</p>
+
+  </center>
+
+<% elsif current_user.has_role? "admin" %>
+  <center>
+    <h1><u>Welcome Admin! <%= current_user.firstname+" "+current_user.lastname %> </u></h1>
+  </center>
+  <hr>
+  <ul>
+    <li>Verify User </li>
+    <li><%= link_to "View Users Details",users_details_path %></li>
+    <li>View Managers Details </li>
+  </ul>
+
+<% elsif (current_user.has_role? "user")&&(current_user[:verify] == true )%>
+  <center>
+    <p>Account Verified Successfully </p>
+  </center>
+
+<% else%>
+  <center>
+    <h1><u>Welcome Manager! <%= current_user.firstname+" "+current_user.lastname %> of <%= current_user.bankname %> Bank</u></h1>
+  </center>
+  <ul>
+    <li>Verify User </li>
+    <li>View User Details </li>
+  </ul>
+<% end %>
+
+

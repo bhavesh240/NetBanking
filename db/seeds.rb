@@ -11,7 +11,8 @@ bank_list = [
    "BOI",
    "SBI",
    "ICICI",
-   "Punjab"
+   "Punjab",
+   "Axis"
 ]
 
 bank_list.each do |name|

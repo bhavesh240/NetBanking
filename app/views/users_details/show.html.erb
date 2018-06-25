@@ -1,0 +1,72 @@
+<table class="table table-bordered">
+  <tr>
+    <th>User_id: </th>
+    <td><%= @user.id %></td>
+  </tr>
+  <tr>
+    <th>Profile Photo: </th>
+    <td><%= link_to image_tag(@user.userimage.url(:thumb).to_s),@user.userimage.url %></td>
+  </tr>
+  <tr>
+    <th>FirstName: </th>
+    <td><%= @user.firstname %></td>
+  </tr>
+  <tr>
+    <th>LastName: </th>
+    <td><%= @user.lastname %></td>
+  </tr>
+  <tr>
+    <th>FatherName: </th>
+    <td><%= @user.fathername %></td>
+  </tr>
+  <tr>
+    <th>MotherName: </th>
+    <td><%= @user.mothername %></td>
+  </tr>
+  <tr>
+    <th>Occupation: </th>
+    <td><%= @user.occupation %></td>
+  </tr>
+  <tr>
+    <th>FatherOccupation: </th>
+    <td><%= @user.fatheroccupation %></td>
+  </tr>
+  <tr>
+    <th>MotherOccupation: </th>
+    <td><%= @user.motheroccupation %></td>
+  </tr>
+  <tr>
+    <th>PhoneNumber: </th>
+    <td><%= @user.phonenumber %></td>
+  </tr>
+  <tr>
+    <th>Email: </th>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <th>AadharNumber: </th>
+    <td><%= @user.aadharnumber %></td>
+  </tr>
+  <tr>
+    <th>Pan Number: </th>
+    <td><%= @user.pannumber %></td>
+  </tr>
+  <tr>
+    <th>Document Image: </th>
+    <td><%= link_to image_tag(@user.documentimage.url(:thumb).to_s), @user.documentimage.url %></td>
+  </tr>
+  <tr>
+    <th>BankName: </th>
+    <td><%= @user.bankname %></td>
+  </tr>
+  <tr>
+    <th>Permanent Address:</th>
+    <td><%= @user.permanentaddress.houseno.+","+@user.permanentaddress.streetno+" "+@user.permanentaddress.area+",("+@user.permanentaddress.state+") Pincode : "+@user.permanentaddress.pincode.to_s %></td>
+  </tr>
+  <tr>
+    <th>Local Address:</th>
+    <td><%= @user.localaddress.houseno.+","+@user.localaddress.streetno+" "+@user.localaddress.area+",("+@user.localaddress.state+") Pincode : "+@user.localaddress.pincode.to_s %></td>
+  </tr>
+</table>
+
+<%= link_to 'Verify',verify_users_detail_path,class: "btn btn-success" %>

@@ -1,0 +1,33 @@
+<table id="users_table" class="table table-hover">
+  <thead>
+  <tr>
+    <th>FirstName</th>
+    <th>LastName</th>
+    <th>PhoneNumber</th>
+    <th>Email</th>
+    <th>Show User</th>
+    <th>Verify</th>>
+  </tr>
+</thead>
+
+
+<tbody>
+  <% @users.each do |user| %>
+  
+    <tr>
+      <td><%= user.firstname %></td>
+      <td><%= user.lastname %></td>
+      <td><%= user.phonenumber %></td>
+      <td><%= user.email %></td>
+      <td><%= link_to "Full Details",users_detail_path(user) %></td>
+
+      <% if user[:verify] == true %>
+        <td>Verified User</td>
+      <% else %>
+        <td class="text-danger">Unverified User</td>
+      <% end %>
+    </tr> 
+  <% end %>
+</tbody>
+
+</table>
