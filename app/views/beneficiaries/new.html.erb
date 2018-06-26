@@ -1,0 +1,23 @@
+<h1>Add New Beneficary</h1>
+
+<div class="col-md-4">
+
+  <%= form_with model: @beneficiary  do |f| %>
+    <div class="field form-group">
+      <%= f.label "Enter Beneficiary Name" %>
+      <%= f.text_field :name, class: "form-control",autofocus: true%>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label "Enter Beneficiary Account Number" %>
+      <%= f.text_field :account_number, class: "form-control",autofocus: true%>
+    </div>
+
+    <div class="field form-group">
+      <%= f.submit class: "form-control btn btn-success",autofocus: true%>
+    </div>
+
+  <% end %>
+
+</div>
+

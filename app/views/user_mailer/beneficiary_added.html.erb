@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Beneficiary has been added to your Account </p>
+    <p>Beneficiary name: <%= @user.beneficiaries.last.name %></p>
+    <p>Account Number: <%= @user.beneficiaries.last.account_number %></p>
+  </body>
+</html>

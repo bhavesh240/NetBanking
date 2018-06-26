@@ -1,15 +1,22 @@
 <% if (current_user.has_role? "user")&&(current_user[:verify] == nil)  %>
   <center>
-  <h1>
-    <u>Welcome <%= current_user.firstname+" "+current_user.lastname %>To NetBanking System</u>
-  </h1>
-  <hr>
-    <p> Your Account Is on Hold </p>
-    <p> Need to be verified by Bank Manager </p>
-    <p>Regards</p>
-    <p><%= current_user.bankname %>,BankManager</p>
+    <h1>
+      <u>Welcome <%= current_user.firstname+" "+current_user.lastname %>To NetBanking System</u>
+    </h1>
+    <hr>
+      <p> Your Account Is on Hold </p>
+      <p> Need to be verified by Bank Manager </p>
+      <p>Regards</p>
+      <p><%= current_user.bankname %>,BankManager</p>
+    </center>
 
-  </center>
+<% elsif (current_user.has_role? "user")&&(current_user[:verify] == true )%>
+    <p><strong>Verified Account</strong></p>
+    <ul class="nav">
+      <li class="nav-link"><%= link_to 'Fund Transfer'%></li>
+      <li class="nav-link"><%= link_to 'Add Beneficiary', new_beneficiary_path %></li>
+      <li class="nav-link"><%= link_to 'View Transaction'%></li>
+    </ul>
 
 <% elsif current_user.has_role? "admin" %>
   <center>
@@ -22,12 +29,7 @@
     <li>View Managers Details </li>
   </ul>
 
-<% elsif (current_user.has_role? "user")&&(current_user[:verify] == true )%>
-  <center>
-    <p>Account Verified Successfully </p>
-  </center>
-
-<% else%>
+<% else %>
   <center>
     <h1><u>Welcome Manager! <%= current_user.firstname+" "+current_user.lastname %> of <%= current_user.bankname %> Bank</u></h1>
   </center>

@@ -1,0 +1,15 @@
+<h1>Beneficiary Index Page</h1>
+
+<table class="table">
+  <tr>
+    <th>Beneficiary Name</th>
+    <th>Beneficiary Account Number</th>
+  </tr>
+
+  <% @user.beneficiaries.each do |beneficiary| %>
+    <tr>
+      <td><%= beneficiary.name %></td>
+      <td><%= beneficiary.account_number %></td>
+    </tr>
+  <% end %>
+</table>

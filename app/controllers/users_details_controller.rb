@@ -9,7 +9,8 @@ class UsersDetailsController < ApplicationController
 
   def verify
     @user = User.find(params[:id])
-    @users = User.all
+
+   # @account_number = @user.account.account_number
 
     @user.update_columns(verify: true) if !@user.verify
 
