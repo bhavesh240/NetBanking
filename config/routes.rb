@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   resources :beneficiaries
 
+  resources :transactions do
+    get 'generate_otp', on: :member
+  end
+
   resources :users_details do
     get 'verify',on: :member 
   end

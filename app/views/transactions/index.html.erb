@@ -1,0 +1,25 @@
+<h1>Transaction Index Page</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Date</th>
+    <th>Amount</th>
+    <th>Account Number</th>
+    <th>Transaction Type</th>
+  </tr>
+
+  <% @transactions.all.each do |transaction| %>
+    <tr>
+      <td><%= transaction.created_at.strftime("%m/%d/%y") %></td>
+      <td><%= transaction.amount %></td>
+
+      <% if transaction.account_id==current_user.account.id %>
+        <td><%= transaction.user.account.account_number %></td>
+        <td>Credit</td>
+      <% else %>
+        <td><%= transaction.account.account_number %></td>
+        <td>Debit</td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

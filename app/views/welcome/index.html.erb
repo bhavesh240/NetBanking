@@ -13,9 +13,10 @@
 <% elsif (current_user.has_role? "user")&&(current_user[:verify] == true )%>
     <p><strong>Verified Account</strong></p>
     <ul class="nav">
-      <li class="nav-link"><%= link_to 'Fund Transfer'%></li>
       <li class="nav-link"><%= link_to 'Add Beneficiary', new_beneficiary_path %></li>
-      <li class="nav-link"><%= link_to 'View Transaction'%></li>
+      <li class="nav-link"><%= link_to 'View Transactions',transactions_path%></li>
+      <li class="nav-link"><%= link_to 'View Beneficiaries', beneficiaries_path   %></li>
+      <li class="nav-link"><%= link_to 'Fund Transfer', new_transaction_path %></li>
     </ul>
 
 <% elsif current_user.has_role? "admin" %>

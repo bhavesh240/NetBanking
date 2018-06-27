@@ -21,6 +21,8 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :beneficiaries, dependent: :destroy
 
+  has_many :transactions, dependent: :destroy
+
 
   def assign_default_role
     self.add_role(:user) if self.roles.blank?
