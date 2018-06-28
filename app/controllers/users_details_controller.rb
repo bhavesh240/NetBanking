@@ -9,16 +9,8 @@ class UsersDetailsController < ApplicationController
 
   def verify
     @user = User.find(params[:id])
-
-   # @account_number = @user.account.account_number
-
     @user.update_columns(verify: true) if !@user.verify
-
     UserMailer.with(user: @user).verification_mail.deliver
-
     redirect_to users_details_path
-    
   end
-
-
 end

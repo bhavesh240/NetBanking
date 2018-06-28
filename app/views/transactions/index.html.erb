@@ -3,16 +3,14 @@
 <table class="table table-striped">
   <tr>
     <th>Date</th>
-    <th>Amount</th>
     <th>Account Number</th>
     <th>Transaction Type</th>
+    <th>Amount</th>
   </tr>
 
   <% @transactions.all.each do |transaction| %>
     <tr>
-      <td><%= transaction.created_at.strftime("%m/%d/%y") %></td>
-      <td><%= transaction.amount %></td>
-
+      <td><%= transaction.created_at.strftime("%m/%d/%y--%H:%M:%S") %></td>
       <% if transaction.account_id==current_user.account.id %>
         <td><%= transaction.user.account.account_number %></td>
         <td>Credit</td>
@@ -20,6 +18,12 @@
         <td><%= transaction.account.account_number %></td>
         <td>Debit</td>
       <% end %>
+      <td><%= transaction.amount %></td>
     </tr>
   <% end %>
 </table>
+
+<h5>Available Balance : <%= current_user.account.balance %> Rs.</h5>
+
+
+<%= link_to 'Download Mini Statement', download_transaction_path(@transactions,format: 'pdf') ,class: "btn btn-info" %>

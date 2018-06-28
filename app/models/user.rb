@@ -2,7 +2,7 @@ class User < ApplicationRecord
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable,:timeoutable,
          :recoverable, :rememberable, :trackable, :validatable,:confirmable
 
   mount_uploader :documentimage, ImageUploader
@@ -16,6 +16,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :permanentaddress
 
   has_one :account, dependent: :destroy
+
+  belongs_to :bank, dependent: :destroy
 
   after_create :assign_default_role, :generate_account
 

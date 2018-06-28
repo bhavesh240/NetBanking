@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :transactions do
     get 'generate_otp', on: :member
+    get 'download', on: :member
   end
 
   resources :users_details do

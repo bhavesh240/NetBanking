@@ -30,6 +30,10 @@ gem 'rolify'
 
 gem 'cancancan'
 
+gem 'prawn'
+gem 'responders'
+gem 'prawn-table'
+
 gem 'mini_magick'
 
 gem 'jquery-datatables-rails'
