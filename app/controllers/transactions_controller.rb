@@ -12,6 +12,7 @@ class TransactionsController < ApplicationController
   end
 
   def create
+    to_account_number = params[:transaction].values[0] 
     amount = params[:transaction].values[1].to_i
     to_account = Account.find_by_account_number(params[:transaction].values[0])
     to_account_user = User.find(to_account.user_id)
@@ -25,6 +26,7 @@ class TransactionsController < ApplicationController
       TransactionMailer.amount_debited(current_user,amount).deliver
       redirect_to transactions_path
     else
+      flash[:alert] = "Invalid Otp or Beneficiary doesn't exixts"
       redirect_to new_transaction_path
     end
   end
@@ -41,10 +43,6 @@ class TransactionsController < ApplicationController
   end
 
   def download
-    #@transactions_credited = Transaction.all.where(account_id: current_user.account.id)
-    #@transactions_debited = current_user.transactions
-
-    #@transactions = @transactions_credited.or(@transactions_debited)
     index
     respond_to do |format|
       format.html
@@ -57,7 +55,7 @@ class TransactionsController < ApplicationController
       end
     end
   end
-  
+
 end
 
  

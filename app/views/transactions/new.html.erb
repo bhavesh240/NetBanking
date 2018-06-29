@@ -5,7 +5,7 @@
   <%= form_with model: @transaction  do |f| %>
     <div class="field form-group">
       <%= f.label "To Account Number" %>
-      <%= f.text_field :to_account_number, class: "form-control",autofocus: true %>
+      <%= f.collection_select(:to_account_number, current_user.beneficiaries.all, :account_number,:account_number, :include_blank => "Please select beneficiary") %>
     </div>
 
     <div class="field form-group">

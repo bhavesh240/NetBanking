@@ -1,0 +1,19 @@
+<table id="manager_table" class="table table-hover">
+  <thead>
+    <tr>
+      <th>Bankname</th>
+      <th>Manager Name</th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @managers.each do |manager| %>
+      <tr>
+        <td><%= manager.bankname %></td>
+        <td><%= manager.manager_name %></td>
+      </tr> 
+    <% end %>
+  </tbody>
+</table>
+

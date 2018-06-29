@@ -1,0 +1,17 @@
+<h1>Create Manager</h1>
+
+ <div class="col-md-4">
+
+  <%= form_with model: @bank, url: managers_path do |f| %>
+    <div class="field form-group">
+      <%= f.label "Enter Account Number" %>
+      <%= f.text_field :account_number, class: "form-control",autofocus: true%>
+    </div>
+
+    <div class="field form-group">
+      <%= f.submit "Create Manager", class: "form-control btn btn-success",autofocus: true%>
+    </div>
+
+  <% end %>
+
+</div>

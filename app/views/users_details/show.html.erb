@@ -3,6 +3,12 @@
     <th>User_id: </th>
     <td><%= @user.id %></td>
   </tr>
+  <% if @user.verify==true %>
+    <tr>
+      <th>Account Number : </th>
+      <td><%= @user.account.account_number %></td>
+    </tr>
+  <% end %>
   <tr>
     <th>Profile Photo: </th>
     <td><%= link_to image_tag(@user.userimage.url(:thumb).to_s),@user.userimage.url %></td>
@@ -67,6 +73,12 @@
     <th>Local Address:</th>
     <td><%= @user.localaddress.houseno.+","+@user.localaddress.streetno+" "+@user.localaddress.area+",("+@user.localaddress.state+") Pincode : "+@user.localaddress.pincode.to_s %></td>
   </tr>
+
 </table>
 
-<%= link_to 'Verify',verify_users_detail_path,class: "btn btn-success" %>
+<% if (@user.verify == nil || @user.verify == false) %>
+  <%= link_to 'Verify',verify_users_detail_path,class: "btn btn-success" %>
+<% else %>
+  <p>Verified User </p>
+  <%= link_to 'View User Transactions',transactions_path %>
+<% end %>

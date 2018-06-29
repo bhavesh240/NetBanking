@@ -10,26 +10,8 @@
       <p><%= current_user.bankname %>,BankManager</p>
     </center>
 
-<% elsif (current_user.has_role? "user")&&(current_user[:verify] == true )%>
-    <p><strong>Verified Account</strong></p>
-    <ul class="nav">
-      <li class="nav-link"><%= link_to 'Add Beneficiary', new_beneficiary_path %></li>
-      <li class="nav-link"><%= link_to 'View Transactions',transactions_path %></li>
-      <li class="nav-link"><%= link_to 'View Beneficiaries', beneficiaries_path   %></li>
-      <li class="nav-link"><%= link_to 'Fund Transfer', new_transaction_path %></li>
-    </ul>
-
-<% elsif current_user.has_role? "admin" %>
-  <center>
-    <h1><u>Welcome Admin! <%= current_user.firstname+" "+current_user.lastname %> </u></h1>
-  </center>
-  <hr>
-  <ul class="nav">
-    <li class="nav-link">Verify User </li>
-    <li class="nav-link"><%= link_to "View Users Details",users_details_path %></li>
-    <li class="nav-link">View Managers Details </li>
-  </ul>
-
+<% elsif current_user.has_role? "admin" %>  
+  <br><h1>Welcome Admin! <%= current_user.firstname+" "+current_user.lastname %></h1>
 <% else %>
   <center>
     <h1><u>Welcome Manager! <%= current_user.firstname+" "+current_user.lastname %> of <%= current_user.bankname %> Bank</u></h1>

@@ -1,13 +1,10 @@
-class BeneficiariesController < ApplicationController
-  
-  
+class BeneficiariesController < ApplicationController  
   def index
     @user = current_user
     @beneficiaries = Beneficiary.all
   end
 
   def create
-
     account_number = params[:beneficiary].values[1]
     account = Account.find_by_account_number(account_number)
 
@@ -19,6 +16,7 @@ class BeneficiariesController < ApplicationController
         redirect_to  beneficiaries_path
       end
     else
+      flash[:alert] = "Beneficiary Does'nt Exists "
       redirect_to  new_beneficiary_path
     end
   end

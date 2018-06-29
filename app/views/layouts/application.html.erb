@@ -12,15 +12,30 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <p class="navbar-text pull-right">
+  <nav class="navbar navbar-inverse bg-light">
     <% if user_signed_in? %>
-      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+      <%= link_to 'Edit profile', edit_user_registration_path %> 
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <% if (current_user.has_role? "user")&&(current_user[:verify] == true )%>
+        <%= link_to 'Add Beneficiary', new_beneficiary_path %>
+        <%= link_to 'View Transactions',transactions_path %>
+        <%= link_to 'View Beneficiaries', beneficiaries_path %>
+        <%= link_to 'Fund Transfer', new_transaction_path %>
+      <% end %>
+      <% if current_user.has_role?("admin")%>
+        <%= link_to "View Users Details",users_details_path %>
+        <%= link_to "Create Manager",new_manager_path %>
+        <%= link_to "View Managers", managers_path %>
+      <%end%>
+      <% if current_user.has_role?("manager")%>
+        <%= link_to "View Users Details",managers_path %>
+      <% end %>
+
     <% else %>
-      <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-      <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+      <%= link_to "Sign up", new_user_registration_path %> 
+      <%= link_to "Login", new_user_session_path %>
     <% end %>
-  </p>
+  </nav>
   <body>
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>

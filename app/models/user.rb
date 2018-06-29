@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   has_one :account, dependent: :destroy
 
-  belongs_to :bank, dependent: :destroy
+  #belongs_to :bank, dependent: :destroy
 
   after_create :assign_default_role, :generate_account
 
