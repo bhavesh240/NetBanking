@@ -28,7 +28,7 @@
         <%= link_to "View Managers", managers_path %>
       <%end%>
       <% if current_user.has_role?("manager")%>
-        <%= link_to "View Users Details",managers_path %>
+        <%= link_to "View Users Details",users_details_path %>
       <% end %>
 
     <% else %>
